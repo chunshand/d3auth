@@ -2,6 +2,8 @@
 golang写的简易版第三方登录方法
 
 
+>假如有错误之处 还请直接提出 立马改正
+
 # 安装
 
 `go get github.com/zcshan/d3outh`
