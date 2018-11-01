@@ -60,3 +60,21 @@ type Outh_wx_succ_res struct {
 }
 
 //@ weixin 结构 ------------------------------------------------- end
+
+//@ github 结构 ------------------------------------------------- start
+
+type Outh_github struct {
+	Conf *Outh_conf
+}
+
+type Outh_github_err_res struct {
+	Error             int    `json:"errcode"`
+	Error_description string `json:"errmsg"`
+}
+
+type Outh_github_succ_res struct {
+	Access_Token string `json:"access_token"`
+	Openid       string `json:"openid"`
+}
+
+//@ github 结构 ------------------------------------------------- end

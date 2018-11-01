@@ -63,3 +63,24 @@ fmt.Print(wxouth.Get_Rurl("sate")） //获取第三方登录地址
 wxres, err := wxouth.Get_Token("code")
 
 userinfo, _ := wxouth.Get_User_Info(wxres.Access_Token, wxres.Openid) //获取用户信息 userinfo 是一个json字符串返回
+
+## github
+
+githubconf := &d3outh.Outh_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm/D3/d3_code/type/github"}
+
+githubouth := d3outh.NewOuth_github(githubconf)
+
+fmt.Print(githubouth.Get_Rurl("state"), "\r\n") //获取第三方登录地址
+
+token, err := githubouth.Get_Token("6d92d879d8b1a86922a9") //回调页收的code 获取token
+if err != nil {
+	fmt.Print(err, "\r\n")
+	return
+}
+
+userinfo, err := githubouth.Get_User_Info(token) //获取用户信息 userinfo 是一个json字符串返回
+if err != nil {
+	fmt.Print(err)
+}
+
+fmt.Print(userinfo)	
