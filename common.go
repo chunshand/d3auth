@@ -1,8 +1,7 @@
-package d3outh
+package d3auth
 
 import (
 	"crypto/tls"
-
 	"io/ioutil"
 	"net/http"
 )

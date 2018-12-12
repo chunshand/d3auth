@@ -1,10 +1,10 @@
-# d3outh
+# d3auth
 golang写的简易版第三方登录方法
 
 
 # 安装
 
-`go get github.com/zcshan/d3outh`
+`go get github.com/zcshan/d3auth`
 
 # emmm
 
@@ -20,65 +20,65 @@ golang写的简易版第三方登录方法
 
 ## qq
 
-qqconf := &d3outh.Outh_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm"}
+qqconf := &d3auth.Auth_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm"}
 
-qqouth := d3outh.NewOuth_qq(qqconf)
+qqAuth := d3auth.NewAuth_qq(qqconf)
 
-fmt.Print(qqouth.Get_Rurl("state")) //获取第三方登录地址
+fmt.Print(qqAuth.Get_Rurl("state")) //获取第三方登录地址
 
-token, err := qqouth.Get_Token("code")  //回调页收的code 获取token
+token, err := qqAuth.Get_Token("code")  //回调页收的code 获取token
 
 
-me, err := qqouth.Get_Me(token)  //获取第三方id
+me, err := qqAuth.Get_Me(token)  //获取第三方id
 
 Client_ID string `json:"client_id"`
 OpenID    string `json:"openid"`
 
-userinfo, _ := wbouth.Get_User_Info(token, me.OpenID)  //获取用户信息 userinfo 是一个json字符串返回
+userinfo, _ := wbAuth.Get_User_Info(token, me.OpenID)  //获取用户信息 userinfo 是一个json字符串返回
 
 ## weibo
 
-wbconf := &d3outh.Outh_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm"}
+wbconf := &d3auth.Auth_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm"}
 
-wbouth := outh.NewOuth_wb(wbconf)
+wbAuth := Auth.NewAuth_wb(wbconf)
 
-fmt.Print(wbouth.Get_Rurl("state")) //获取第三方登录地址
+fmt.Print(wbAuth.Get_Rurl("state")) //获取第三方登录地址
 
 
-tokenobj, err := wbouth.Get_Token("code")
+tokenobj, err := wbAuth.Get_Token("code")
 
 Access_Token string `json:"access_token"`
 Openid       string `json:"uid"`
 
-userinfo, _ := wbouth.Get_User_Info(tokenobj.Access_Token, tokenobj.Openid)//获取用户信息 userinfo 是一个json字符串返回
+userinfo, _ := wbAuth.Get_User_Info(tokenobj.Access_Token, tokenobj.Openid)//获取用户信息 userinfo 是一个json字符串返回
 
 ## wechat
 
-wxconf := &d3outh.Outh_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm"}
+wxconf := &d3auth.Auth_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm"}
 
-wxouth := outh.NewOuth_wx(wxconf)
+wxAuth := Auth.NewAuth_wx(wxconf)
 
-fmt.Print(wxouth.Get_Rurl("sate")） //获取第三方登录地址
+fmt.Print(wxAuth.Get_Rurl("sate")） //获取第三方登录地址
 
-wxres, err := wxouth.Get_Token("code")
+wxres, err := wxAuth.Get_Token("code")
 
-userinfo, _ := wxouth.Get_User_Info(wxres.Access_Token, wxres.Openid) //获取用户信息 userinfo 是一个json字符串返回
+userinfo, _ := wxAuth.Get_User_Info(wxres.Access_Token, wxres.Openid) //获取用户信息 userinfo 是一个json字符串返回
 
 ## github
 
-githubconf := &d3outh.Outh_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm/D3/d3_code/type/github"}
+githubconf := &d3auth.Auth_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm/D3/d3_code/type/github"}
 
-githubouth := d3outh.NewOuth_github(githubconf)
+githubAuth := d3auth.NewAuth_github(githubconf)
 
-fmt.Print(githubouth.Get_Rurl("state"), "\r\n") //获取第三方登录地址
+fmt.Print(githubAuth.Get_Rurl("state"), "\r\n") //获取第三方登录地址
 
-token, err := githubouth.Get_Token("6d92d879d8b1a86922a9") //回调页收的code 获取token
+token, err := githubAuth.Get_Token("6d92d879d8b1a86922a9") //回调页收的code 获取token
 if err != nil {
 	fmt.Print(err, "\r\n")
 	return
 }
 
-userinfo, err := githubouth.Get_User_Info(token) //获取用户信息 userinfo 是一个json字符串返回
+userinfo, err := githubAuth.Get_User_Info(token) //获取用户信息 userinfo 是一个json字符串返回
 if err != nil {
 	fmt.Print(err)
 }

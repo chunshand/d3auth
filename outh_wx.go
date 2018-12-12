@@ -1,9 +1,8 @@
-package d3outh
+package d3auth
 
 import (
 	"encoding/json"
-	"errors"
-	//	"fmt"
+	"errors" //	"fmt"
 	"regexp"
 	"strconv"
 )

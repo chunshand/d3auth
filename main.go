@@ -1,4 +1,4 @@
-package d3outh
+package d3auth
 
 func init() {
 

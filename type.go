@@ -1,9 +1,9 @@
-package d3outh
+package d3auth
 
 //	"encoding/json"
 
 //基本配置
-type Outh_conf struct {
+type Auth_conf struct {
 	Appid  string
 	Appkey string
 	Rurl   string
@@ -11,14 +11,14 @@ type Outh_conf struct {
 
 //@ qq 结构 ------------------------------------------------- start
 
-type Outh_qq struct {
-	Conf *Outh_conf
+type Auth_qq struct {
+	Conf *Auth_conf
 }
-type Outh_qq_err_res struct {
+type Auth_qq_err_res struct {
 	Error             int    `json:"error"`
 	Error_description string `json:"error_description"`
 }
-type Outh_qq_me struct {
+type Auth_qq_me struct {
 	Client_ID string `json:"client_id"`
 	OpenID    string `json:"openid"`
 }
@@ -27,16 +27,16 @@ type Outh_qq_me struct {
 
 //@ weibo 结构 ------------------------------------------------- start
 
-type Outh_wb struct {
-	Conf *Outh_conf
+type Auth_wb struct {
+	Conf *Auth_conf
 }
 
-type Outh_wb_err_res struct {
+type Auth_wb_err_res struct {
 	Error             int    `json:"error_code"`
 	Error_description string `json:"error"`
 }
 
-type Outh_wb_succ_res struct {
+type Auth_wb_succ_res struct {
 	Access_Token string `json:"access_token"`
 	Openid       string `json:"uid"`
 }
@@ -45,16 +45,16 @@ type Outh_wb_succ_res struct {
 
 //@ weixin 结构 ------------------------------------------------- start
 
-type Outh_wx struct {
-	Conf *Outh_conf
+type Auth_wx struct {
+	Conf *Auth_conf
 }
 
-type Outh_wx_err_res struct {
+type Auth_wx_err_res struct {
 	Error             int    `json:"errcode"`
 	Error_description string `json:"errmsg"`
 }
 
-type Outh_wx_succ_res struct {
+type Auth_wx_succ_res struct {
 	Access_Token string `json:"access_token"`
 	Openid       string `json:"openid"`
 }
@@ -63,16 +63,16 @@ type Outh_wx_succ_res struct {
 
 //@ github 结构 ------------------------------------------------- start
 
-type Outh_github struct {
-	Conf *Outh_conf
+type Auth_github struct {
+	Conf *Auth_conf
 }
 
-type Outh_github_err_res struct {
+type Auth_github_err_res struct {
 	Error             int    `json:"errcode"`
 	Error_description string `json:"errmsg"`
 }
 
-type Outh_github_succ_res struct {
+type Auth_github_succ_res struct {
 	Access_Token string `json:"access_token"`
 	Openid       string `json:"openid"`
 }
