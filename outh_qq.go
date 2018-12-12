@@ -8,12 +8,12 @@ import (
 )
 
 //获取登录地址
-func (e *Outh_qq) Get_Rurl(state string) string {
+func (e *Auth_qq) Get_Rurl(state string) string {
 	return "https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=" + e.Conf.Appid + "&redirect_uri=" + e.Conf.Rurl + "&state=" + state
 }
 
 //获取token
-func (e *Outh_qq) Get_Token(code string) (string, error) {
+func (e *Auth_qq) Get_Token(code string) (string, error) {
 	str, err := HttpGet("https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=" + e.Conf.Appid + "&client_secret=" + e.Conf.Appkey + "&code=" + code + "&redirect_uri=" + e.Conf.Rurl)
 	if err != nil {
 		return "", err
@@ -23,7 +23,7 @@ func (e *Outh_qq) Get_Token(code string) (string, error) {
 		re, _ := regexp.Compile("({.*})")
 		newres := re.FindStringSubmatch(str)
 		errstr := newres[0]
-		p := &Outh_qq_err_res{}
+		p := &Auth_qq_err_res{}
 		err := json.Unmarshal([]byte(errstr), p)
 		if err != nil {
 			return "", err
@@ -42,7 +42,7 @@ func (e *Outh_qq) Get_Token(code string) (string, error) {
 }
 
 //获取第三方id
-func (e *Outh_qq) Get_Me(access_token string) (*Outh_qq_me, error) {
+func (e *Auth_qq) Get_Me(access_token string) (*Auth_qq_me, error) {
 
 	str, err := HttpGet("https://graph.qq.com/oauth2.0/me?access_token=" + access_token)
 	if err != nil {
@@ -53,7 +53,7 @@ func (e *Outh_qq) Get_Me(access_token string) (*Outh_qq_me, error) {
 		re, _ := regexp.Compile("({.*})")
 		newres := re.FindStringSubmatch(str)
 		errstr := newres[0]
-		p := &Outh_qq_err_res{}
+		p := &Auth_qq_err_res{}
 		err := json.Unmarshal([]byte(errstr), p)
 		if err != nil {
 			return nil, err
@@ -64,7 +64,7 @@ func (e *Outh_qq) Get_Me(access_token string) (*Outh_qq_me, error) {
 		re, _ := regexp.Compile("({.*})")
 		newres := re.FindStringSubmatch(str)
 		errstr := newres[0]
-		p := &Outh_qq_me{}
+		p := &Auth_qq_me{}
 		err := json.Unmarshal([]byte(errstr), p)
 		if err != nil {
 			return nil, err
@@ -76,7 +76,7 @@ func (e *Outh_qq) Get_Me(access_token string) (*Outh_qq_me, error) {
 }
 
 //获取第三方用户信息
-func (e *Outh_qq) Get_User_Info(access_token string, openid string) (string, error) {
+func (e *Auth_qq) Get_User_Info(access_token string, openid string) (string, error) {
 
 	str, err := HttpGet("https://graph.qq.com/user/get_user_info?access_token=" + access_token + "&oauth_consumer_key=" + e.Conf.Appid + "&openid=" + openid)
 	if err != nil {
@@ -87,8 +87,8 @@ func (e *Outh_qq) Get_User_Info(access_token string, openid string) (string, err
 }
 
 //构造方法
-func NewOuth_qq(config *Outh_conf) *Outh_qq {
-	return &Outh_qq{
+func NewAuth_qq(config *Auth_conf) *Auth_qq {
+	return &Auth_qq{
 		Conf: config,
 	}
 }

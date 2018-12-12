@@ -4,7 +4,7 @@ golang写的简易版第三方登录方法
 
 # 安装
 
-
+`go get gitee.com/zchunshan/d3auth`
 
 # emmm
 
@@ -43,7 +43,7 @@ golang写的简易版第三方登录方法
 ```golang
 		wbconf := &d3auth.Auth_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm"}
 
-		wbAuth := Auth.NewAuth_wb(wbconf)
+		wbAuth := d3auth.NewAuth_wb(wbconf)
 
 		fmt.Print(wbAuth.Get_Rurl("state")) //获取第三方登录地址
 
@@ -61,7 +61,7 @@ golang写的简易版第三方登录方法
 ```golang
 		wxconf := &d3auth.Auth_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.change.tm"}
 
-		wxAuth := Auth.NewAuth_wx(wxconf)
+		wxAuth := d3auth.NewAuth_wx(wxconf)
 
 		fmt.Print(wxAuth.Get_Rurl("sate")） //获取第三方登录地址
 
