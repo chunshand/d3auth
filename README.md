@@ -4,7 +4,7 @@ golang写的简易版第三方登录方法
 
 # 安装
 
-`go get gitee.com/zchunshan/d3auth`
+
 
 # emmm
 
