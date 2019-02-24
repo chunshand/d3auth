@@ -78,3 +78,20 @@ type Auth_github_succ_res struct {
 }
 
 //@ github 结构 ------------------------------------------------- end
+
+//@ gitee 结构 ------------------------------------------------- start
+
+type Auth_gitee struct {
+	Conf *Auth_conf
+}
+
+type Auth_gitee_err_res struct {
+	Error             int    `json:"errcode"`
+	Error_description string `json:"errmsg"`
+}
+
+type Auth_gitee_succ_res struct {
+	Access_Token string `json:"access_token"`
+}
+
+//@ gitee 结构 ------------------------------------------------- end

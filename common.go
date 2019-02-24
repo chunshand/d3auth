@@ -4,10 +4,18 @@ import (
 	"crypto/tls"
 	"io/ioutil"
 	"net/http"
+	"net/http/cookiejar"
 )
 
 func HttpGet(geturl string) (string, error) {
-	resp, err := http.Get(geturl)
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+	//http cookie接口
+	cookieJar, _ := cookiejar.New(nil)
+	client := &http.Client{Transport: tr, Jar: cookieJar}
+
+	resp, err := client.Get(geturl)
 	if err != nil {
 		return "", err
 	}

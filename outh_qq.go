@@ -14,10 +14,12 @@ func (e *Auth_qq) Get_Rurl(state string) string {
 
 //获取token
 func (e *Auth_qq) Get_Token(code string) (string, error) {
+
 	str, err := HttpGet("https://graph.qq.com/oauth2.0/token?grant_type=authorization_code&client_id=" + e.Conf.Appid + "&client_secret=" + e.Conf.Appkey + "&code=" + code + "&redirect_uri=" + e.Conf.Rurl)
 	if err != nil {
 		return "", err
 	}
+
 	ismatch, _ := regexp.MatchString("error", str)
 	if ismatch {
 		re, _ := regexp.Compile("({.*})")

@@ -1,10 +1,13 @@
 # d3auth
-golang写的简易版第三方登录方法
+
+第三方登录golang版本的简单实现
 
 
 # 安装
 
 `go get gitee.com/zchunshan/d3auth`
+
+[![GoDoc](http://www.godoc.org/gitee.com/zchunshan/d3auth?status.svg)](http://www.godoc.org/gitee.com/zchunshan/d3auth)
 
 # emmm
 
@@ -17,6 +20,24 @@ golang写的简易版第三方登录方法
 ```
 
 # 使用
+
+## gitee
+
+```golang
+
+	giteeconf := &d3auth.Auth_conf{Appid: "xxx", Appkey: "xxx", Rurl: "http://www.oschina.net/login"}
+
+	giteeAuth := d3auth.NewAuth_gitee(giteeconf)
+
+	fmt.Print(giteeAuth.Get_Rurl("state")) //获取第三方登录地址
+
+	token, err := giteeAuth.Get_Token("3ce778954a27dd95e46e999667353ac4b780d50fa987d8646a534ac820b02c13") //回调页收的code 获取token
+	fmt.Print(token, err)                                                                                 
+	userinfo, _ := giteeAuth.Get_User_Info(token.Access_Token)                                            //获取用户信息 userinfo 是一个json字符串返回
+	fmt.Print(userinfo)
+
+
+```
 
 ## qq
 
