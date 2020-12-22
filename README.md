@@ -1,4 +1,4 @@
-# d3auth
+# d3auth[不管理了]
 
 第三方登录golang版本的简单实现
 
